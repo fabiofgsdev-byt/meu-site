@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendamento · Barbearia do Dadau</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrap">
+    <header>
+      <div class=logo>
+          <img src="img/logo.png" alt="logo Barbearia" class="logo">
+
+      </div>
+
+      <div>
+        <h1>Agendamento — Barbearia do Dadau</h1>
+        <p class="lead">Escolha data e horário.<!-- Este é um agendamento local (front-end). Para salvar no servidor, peça integração com WhatsApp ou um backend.---></p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card">
+        <form id="bookingForm" autocomplete="off">
+          <div class="mb8">
+            <label for="name">Nome completo</label>
+            <input id="name" name="name" required placeholder="Ex: João da Silva" />
+          </div>
+
+          <div class="row mb8">
+            <div style="flex:1">
+              <label for="phone">WhatsApp / Telefone</label>
+              <input id="phone" name="phone" type="tel" placeholder="11 9xxxx-xxxx" required />
+            </div>
+            <div style="width:140px">
+              <label for="service">Serviço</label>
+              <select id="service" name="service">
+                <option value="Corte">Corte</option>
+                <option value="Barba">Barba</option>
+                 <option value="Corte+Barba">Corte + Barba</option>
+                 <option value="Luzes">Luzes</option>
+                  <option value="Alizamento">Alizamento</option>
+               
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb8">
+            <div style="flex:1">
+              <label for="date">Data</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div style="width:140px">
+              <label for="time">Horário</label>
+              <input id="time" name="time" type="time" required />
+            </div>
+          </div>
+
+          <div class="mb8">
+            <label for="barber">Pedir barbeiro (opcional)</label>
+            <input id="barber" name="barber" placeholder="Ex: Dadau" />
+          </div>
+
+
+
+          <div class="flex" style="margin-top:6px">
+            <button class="btn" type="submit">Confirmar agendamento</button>
+            <button id="clearBtn" type="button" class="btn secondary">Limpar</button>
+            <div style="margin-left:auto" class="small muted">Salvo localmente no navegador</div>
+          </div>
+        </form>
+
+        <section class="appointments">
+          <h3 style="margin-top:18px; margin-bottom:8px">Próximos agendamentos</h3>
+          <div id="list" aria-live="polite"></div>
+        </section>
+
+        <p class="footer">Sugestão: integrar este formulário com uma API ou receber via WhatsApp para confirmação manual.</p>
+      </main>
+
+      <aside class="card aside">
+        <h3>Informações rápidas</h3>
+        <p class="muted">Barbearia do Dadau<br>WhatsApp: <strong>11 97030-0895 </strong><br>Endereço: Rua Sebastião Advíncula da Cunha, 252</p>
+
+        <hr style="opacity:.06; border:none; height:1px; background:rgba(255,255,255,0.03); margin:12px 0" />
+
+        <div>
+          <p class="small muted">Como funciona</p>
+          <ol class="small muted">
+            <li>Preencha seus dados e escolha data/hora.</li>
+            <li>O agendamento será salvo no navegador (LocalStorage).</li>
+            <li>Para confirmação real, chame via WhatsApp ou integre com um backend.</li>
+          </ol>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:8px">
+          <button id="exportAll" class="btn secondary">Exportar .ics</button>
+          <button id="clearAll" class="btn secondary">Apagar tudo</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="box card">
+      <h3 id="mTitle">Agendamento criado</h3>
+      <p id="mText" class="muted small"></p>
+      <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end">
+        <button id="modalClose" class="btn secondary">Fechar</button>
+        <button id="downloadIcs" class="btn">Baixar .ics</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

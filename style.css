@@ -1,0 +1,55 @@
+:root {
+  --bg:#0b0b0b; --card:#111114; --accent:#0cb7ce; --muted:#0bcad1; --glass: rgba(255,255,255,0.04);
+  --radius:14px; --maxw:900px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body {
+  background-image: url('img/fundo.png');
+  background-size: cover;      
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+.wrap{max-width:var(--maxw); margin:36px auto; padding:24px;}
+header{display:flex; align-items:center; gap:16px; margin-bottom:20px}
+.logo {
+  width: 300px;
+  height: auto;
+}
+ 
+
+h1{margin:0; font-size:20px}
+p.lead{margin:4px 0 0; color:var(--muted); font-size:20px}
+
+.grid{display:grid; grid-template-columns:1fr 360px; gap:20px}
+@media (max-width:880px){.grid{grid-template-columns:1fr} .aside{order:2}}
+
+.card{background:linear-gradient(180deg,var(--card), #0d0d0d); border-radius:var(--radius); padding:20px; box-shadow:0 8px 30px rgba(2,2,2,0.6);}
+
+form .row{display:flex; gap:12px}
+form label{display:block; font-size:13px; color:black; margin-bottom:6px}
+input, select, textarea{width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:var(--glass); color:black; outline:none}
+input:focus, select:focus, textarea:focus{box-shadow:0 4px 14px rgba(234,179,8,0.12); border-color:rgba(0, 0, 12, 0.932)}
+.btn{display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:10px 14px; border-radius:10px; cursor:pointer; border:0; background:var(--accent); color:#0b0b0b; font-weight:600}
+.btn.secondary{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted)}
+
+.appointments{margin-top:14px}
+.appt{display:flex; justify-content:space-between; gap:12px; align-items:center; padding:10px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.02)}
+.muted{color:var(--muted); font-size:13px; color: black;}
+
+.footer{margin-top:16px; color:var(--muted); font-size:13px}
+
+/* small helpers */
+.small{font-size:13px}
+.flex{display:flex; gap:8px; align-items:center}
+.mb8{margin-bottom:8px}
+.center{display:grid; place-items:center}
+
+/* confirmation modal */
+.modal{position:fixed; inset:0; display:none; background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)); align-items:center; justify-content:center; padding:20px}
+.modal.show{display:flex}
+.modal .box{width:100%; max-width:520px}
+
+/* tiny responsive tweaks */
+@media (max-width:480px){header{gap:10px} .logo{width:56px; height:56px}}
